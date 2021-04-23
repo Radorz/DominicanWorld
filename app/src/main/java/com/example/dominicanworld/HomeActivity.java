@@ -30,8 +30,11 @@ public class HomeActivity extends AppCompatActivity
     setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
 
     drawerLayout = findViewById(R.id.drawer_layout);
-
-
+    ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+            this, drawerLayout, toolbar, R.string.navigation_drawer_open,
+            R.string.navigation_drawer_close);
+    drawerLayout.addDrawerListener(toggle);
+    toggle.syncState();
 
     NavigationView navigationView = findViewById(R.id.navigation_view);
     if(navigationView != null) {
@@ -71,7 +74,7 @@ public class HomeActivity extends AppCompatActivity
         break;
 
       default:
-        throw new IllegalArgumentException("Error en menu");
+        throw new IllegalArgumentException("menu option not implemented!!");
     }
 
     Fragment fragment = HomeContentFragment.newInstance(getString(title));
@@ -90,19 +93,23 @@ public class HomeActivity extends AppCompatActivity
 
   @Override
   public void onDrawerSlide(@NonNull View view, float v) {
+    //cambio en la posición del drawer
   }
 
   @Override
   public void onDrawerOpened(@NonNull View view) {
+    //el drawer se ha abierto completamente
 
   }
 
   @Override
   public void onDrawerClosed(@NonNull View view) {
+    //el drawer se ha cerrado completamente
   }
 
   @Override
   public void onDrawerStateChanged(int i) {
+    //cambio de estado, puede ser STATE_IDLE, STATE_DRAGGING or STATE_SETTLING
   }
 
 }

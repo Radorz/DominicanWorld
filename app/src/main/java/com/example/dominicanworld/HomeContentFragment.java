@@ -82,7 +82,7 @@ public class HomeContentFragment extends Fragment {
           seccion="Otros";
         }
 
-        Fragment fragment =  Listplaces_fragment.newInstance(seccion,0,position);
+        Fragment fragment =  Listplaces_fragment.newInstance(seccion,0,position+1);
         getActivity().getSupportFragmentManager()
                 .beginTransaction()
                 .setCustomAnimations(R.anim.nav_enter, R.anim.nav_exit)

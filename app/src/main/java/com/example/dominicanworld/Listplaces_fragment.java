@@ -201,7 +201,18 @@ public class Listplaces_fragment extends Fragment {
         }
 
 
-        );
+        ){
+
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+
+                Map<String,String> params = new HashMap<>();
+
+                params.put("id",getArguments().getInt(IDtipo)+"");
+
+                return params;
+            }
+        };
 
 
         RequestQueue requestQueue = Volley.newRequestQueue(getContext());
