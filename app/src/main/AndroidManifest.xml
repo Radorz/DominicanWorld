@@ -7,6 +7,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
+        android:allowClearUserData="true"
         android:allowBackup="true"
         android:icon="@mipmap/logominround"
         android:label="@string/app_name"

@@ -88,8 +88,7 @@ public class Detalle_fragment extends Fragment implements OnMapReadyCallback {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable
             Bundle savedInstanceState) {
         View layout = inflater.inflate(R.layout.detalle_fragment, container, false);
-        SupportMapFragment mapFragment = (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.map);
-        mapFragment.getMapAsync(this);
+
 
         if (getArguments() != null) {
         Playabyid("https://dbpasantia.000webhostapp.com/buscarporid.php", layout.getContext());
@@ -116,6 +115,12 @@ public class Detalle_fragment extends Fragment implements OnMapReadyCallback {
         return layout;
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        SupportMapFragment mapFragment = (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.map);
+        mapFragment.getMapAsync(this);
+    }
 
     private void Playabyid(String url, Context v){
         StringRequest stringRequest= new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
@@ -123,7 +128,6 @@ public class Detalle_fragment extends Fragment implements OnMapReadyCallback {
             public void onResponse(String response) {
 
                 if (!response.isEmpty()){
-
                     Toast.makeText(getContext(), "listo", Toast.LENGTH_SHORT);
                     String name;
                     try {
@@ -218,7 +222,7 @@ public class Detalle_fragment extends Fragment implements OnMapReadyCallback {
             @Override
             public void onMyLocationChange(Location location) {
 
-                if (actual_location) {
+                if (actual_location && locationlugar!=null) {
                     latitud_origen = location.getLatitude();
                     longitud_origen = location.getLongitude();
                     actual_location = false;

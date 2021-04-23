@@ -172,7 +172,7 @@ public class Listplaces_fragment extends Fragment {
             public void onResponse(String response) {
 
                 if (!response.isEmpty()){
-
+                    modelo.clear();
                     Toast.makeText(getContext(), "listo", Toast.LENGTH_SHORT);
                     String name;
                     try {
@@ -182,6 +182,7 @@ public class Listplaces_fragment extends Fragment {
                             row = array.getJSONObject(i);
                             modelo.add(new modelo(row.getString("ciudad"), R.mipmap.dominican_foreground,  row.getInt("id_ciudad"),""));
                         }
+                        myAdapter.notifyDataSetChanged();
                         simpleList.setAdapter(myAdapter);
                     }catch (JSONException e){
 
@@ -224,6 +225,7 @@ public class Listplaces_fragment extends Fragment {
             public void onResponse(String response) {
 
                 if (!response.isEmpty()){
+                    modelo.clear();
 
                     Toast.makeText(getContext(), "listo", Toast.LENGTH_SHORT);
                     String name;
@@ -234,6 +236,7 @@ public class Listplaces_fragment extends Fragment {
                             row = array.getJSONObject(i);
                             modelo.add(new modelo(row.getString("nombre"), R.drawable.cascadalimon,  row.getInt("id_lugar"),row.getString("path")));
                         }
+                        myAdapter.notifyDataSetChanged();
 
                         simpleList.setAdapter(myAdapter);
                     }catch (JSONException e){
